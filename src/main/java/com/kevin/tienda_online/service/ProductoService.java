@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kevin.tienda_online.dto.ProductoRequest;
 import com.kevin.tienda_online.dto.ProductoResponse;
+import com.kevin.tienda_online.exception.ProductoNoEncontradoException;
 import com.kevin.tienda_online.model.Producto;
 import com.kevin.tienda_online.repository.ProductoRepository;
 
@@ -73,6 +74,6 @@ public class ProductoService {
 
     private Producto obtenerEntidadPorId(String id){
         return productoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
+                .orElseThrow(() -> new ProductoNoEncontradoException("Producto no encontrado"));
     }
 }

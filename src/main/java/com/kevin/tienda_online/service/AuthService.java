@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.kevin.tienda_online.dto.LoginRequest;
 import com.kevin.tienda_online.dto.RegisterRequest;
 import com.kevin.tienda_online.dto.UsuarioResponse;
+import com.kevin.tienda_online.exception.UsuarioYaExisteException;
 import com.kevin.tienda_online.model.Rol;
 import com.kevin.tienda_online.model.Usuario;
 import com.kevin.tienda_online.repository.UsuarioRepository;
@@ -26,7 +27,7 @@ public class AuthService {
         Usuario usuarioExistente = usuarioRepository.findByEmail(request.getEmail());
 
         if(usuarioExistente != null){ 
-            throw new RuntimeException("El correo ya está registrado");
+            throw new UsuarioYaExisteException("El usuario ya está registrado");
         }
 
         usuario.setNombre(request.getNombre());
