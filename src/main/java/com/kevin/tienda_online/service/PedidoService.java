@@ -103,15 +103,6 @@ public class PedidoService {
 
     }
 
-    public List<PedidoResponse> obtenerPedidosUsuario(String usuarioId) {
-        List<Pedido> pedidos = pedidoRepository.findByUsuarioId(usuarioId);
-        List<PedidoResponse> respuestas = new ArrayList<>();
-        for (Pedido pedido : pedidos) {
-            respuestas.add(convertirAResponse(pedido));
-        }
-        return respuestas;
-    }
-
     private PedidoResponse convertirAResponse(Pedido pedido){
 
         PedidoResponse response = new PedidoResponse();

@@ -82,7 +82,7 @@ public class ProductoService {
                 .orElseThrow(() -> new ProductoNoEncontradoException(Mensajes.PRODUCTO_NO_ENCONTRADO));
     }
 
-    public Page<ProductoResponse> listarProductos(Pageable pageable){
+    public Page<ProductoResponse> listarProductosPaginados(Pageable pageable){
         return productoRepository.findAll(pageable)
                 .map(this::convertirAResponse);
     }

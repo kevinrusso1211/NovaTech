@@ -44,7 +44,7 @@ public class ProductoController {
     @Operation(summary = "Listar productos", description = "Listar todos los productos")
     @GetMapping
     public Page<ProductoResponse> listarProductos(Pageable pageable) {
-        return productoService.listarProductos(pageable);
+        return productoService.listarProductosPaginados(pageable);
     }
 
     @Operation(summary = "Obtener producto por ID", description = "Obtener productopor su ID")

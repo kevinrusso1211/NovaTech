@@ -62,11 +62,6 @@ public class CarritoService {
         }
 
         if (itemExistente != null) {
-            if (itemExistente.getCantidad() + request.getCantidad()
-                > producto.getStock()) {
-
-                throw new StockInsuficienteException(Mensajes.STOK_INSUFICIENTE);
-            }
             int nuevaCantidad = itemExistente.getCantidad() + request.getCantidad();
 
             if (nuevaCantidad > producto.getStock()) {
