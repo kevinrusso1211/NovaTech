@@ -5,9 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kevin.tienda_online.dto.LoginRequest;
-import com.kevin.tienda_online.dto.RegisterRequest;
-import com.kevin.tienda_online.dto.UsuarioResponse;
+import com.kevin.tienda_online.dto.request.LoginRequest;
+import com.kevin.tienda_online.dto.request.RegisterRequest;
+import com.kevin.tienda_online.dto.response.UsuarioResponse;
 import com.kevin.tienda_online.service.AuthService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;

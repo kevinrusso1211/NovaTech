@@ -20,7 +20,7 @@ public class Usuario {
     private String password;
     private String direccion;
     private Rol rol;
-
-
+    
+    private String tokenActivo;
 
 }

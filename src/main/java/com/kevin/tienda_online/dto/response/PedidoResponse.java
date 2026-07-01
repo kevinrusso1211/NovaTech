@@ -1,4 +1,4 @@
-package com.kevin.tienda_online.dto;
+package com.kevin.tienda_online.dto.response;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

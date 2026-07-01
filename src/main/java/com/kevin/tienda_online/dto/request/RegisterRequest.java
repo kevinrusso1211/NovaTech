@@ -1,4 +1,4 @@
-package com.kevin.tienda_online.dto;
+package com.kevin.tienda_online.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,13 +8,19 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LoginRequest {
+public class RegisterRequest {
 
+    @NotBlank
+    private String nombre;
+    @NotBlank
+    private String apellido;
     @NotBlank
     @Email
     private String email;
     @NotBlank
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
+    @NotBlank
+    private String direccion;
 
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kevin.tienda_online.dto.AdminDashboardResponse;
+import com.kevin.tienda_online.dto.response.AdminDashboardResponse;
 import com.kevin.tienda_online.service.AdminService;
 
 @RestController

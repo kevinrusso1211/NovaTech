@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kevin.tienda_online.dto.ProductoRequest;
-import com.kevin.tienda_online.dto.ProductoResponse;
+import com.kevin.tienda_online.dto.request.ProductoRequest;
+import com.kevin.tienda_online.dto.response.ProductoResponse;
 import com.kevin.tienda_online.exception.ProductoNoEncontradoException;
 import com.kevin.tienda_online.model.Categoria;
 import com.kevin.tienda_online.model.Producto;
@@ -74,6 +74,8 @@ public class ProductoService {
         response.setStock(producto.getStock());
         response.setImagenUrl(producto.getImagenUrl());
         response.setCategoria(producto.getCategoria());
+        response.setCalificacionPromedio(producto.getCalificacionPromedio());
+        response.setTotalReseñas(producto.getTotalReseñas());
         return response;
     }
 
@@ -83,8 +85,10 @@ public class ProductoService {
     }
 
     public Page<ProductoResponse> listarProductosPaginados(Pageable pageable){
-        return productoRepository.findAll(pageable)
+        Page<ProductoResponse> productos = productoRepository.findAll(pageable)
                 .map(this::convertirAResponse);
+        System.out.println("Cantidad de productos: " + productos.getTotalElements());
+        return productos;
     }
 
     //Busquedas

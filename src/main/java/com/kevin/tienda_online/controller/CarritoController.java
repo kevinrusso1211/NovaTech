@@ -3,8 +3,8 @@ package com.kevin.tienda_online.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.kevin.tienda_online.dto.AgregarProductoCarritoRequest;
-import com.kevin.tienda_online.dto.CarritoResponse;
+import com.kevin.tienda_online.dto.request.AgregarProductoCarritoRequest;
+import com.kevin.tienda_online.dto.response.CarritoResponse;
 import com.kevin.tienda_online.service.CarritoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

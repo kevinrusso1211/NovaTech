@@ -7,4 +7,5 @@ import com.kevin.tienda_online.model.Usuario;
 public interface UsuarioRepository extends MongoRepository<Usuario, String> {
     Usuario findByEmail(String email);
     long count();
+    
 }

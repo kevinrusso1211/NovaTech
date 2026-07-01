@@ -4,7 +4,7 @@ services:
 
   mongodb:
     image: mongo:8.0
-    container_name: mongodb-tienda
+    container_name: mongodb-NovaTech
     restart: always
     ports:
       - "27017:27017"
@@ -13,14 +13,14 @@ services:
 
   tienda-online:
     build: .
-    container_name: tienda-online-api
+    container_name: NovaTech-api
     restart: always
     depends_on:
       - mongodb
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/tienda_online
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/NovaTech
 
 volumes:
   mongodb_data:

@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kevin.tienda_online.dto.PedidoResponse;
+import com.kevin.tienda_online.dto.response.PedidoResponse;
 import com.kevin.tienda_online.exception.CarritoVacioException;
 import com.kevin.tienda_online.exception.EstadoPedidoInvalidoException;
 import com.kevin.tienda_online.exception.PedidoNoEncontradoException;
@@ -44,8 +44,11 @@ public class PedidoService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private CuponService cuponService;
+
     @Transactional
-    public PedidoResponse crearPedido(String usuarioId){
+    public PedidoResponse crearPedido(String usuarioId, String codigoCupon){
 
         usuarioRepository.findById(usuarioId)
         .orElseThrow(() ->
@@ -77,10 +80,6 @@ public class PedidoService {
                 throw new StockInsuficienteException(Mensajes.STOCK_INSUFICIENTE + producto.getNombre());
             }
 
-            producto.setStock(producto.getStock()-item.getCantidad());
-
-            productoRepository.save(producto);
-
             PedidoItem pedidoItem = new PedidoItem();
 
             pedidoItem.setProductoId(producto.getId());
@@ -94,12 +93,26 @@ public class PedidoService {
         }
 
         pedido.setItems(itemsPedido);
+                if (codigoCupon != null && !codigoCupon.isBlank()) {
+
+            total = cuponService.aplicarCupon(
+                    codigoCupon,
+                    total);
+        }
+        for (CarritoItem item : carrito.getItems()) {
+            Producto producto = productoRepository.findById(item.getProductoId())
+                    .orElseThrow(() ->
+                            new ProductoNoEncontradoException(
+                                    Mensajes.PRODUCTO_NO_ENCONTRADO));
+            producto.setStock(producto.getStock() - item.getCantidad());
+            productoRepository.save(producto);
+        }
         pedido.setTotal(total);
-        pedidoRepository.save(pedido);
+        Pedido pedidoGuardado = pedidoRepository.save(pedido);
         carrito.getItems().clear();
         carritoRepository.save(carrito);
 
-        return convertirAResponse(pedido);
+        return convertirAResponse(pedidoGuardado);
 
     }
 

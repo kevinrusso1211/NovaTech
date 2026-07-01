@@ -6,8 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.kevin.tienda_online.dto.ProductoRequest;
-import com.kevin.tienda_online.dto.ProductoResponse;
+
+import com.kevin.tienda_online.dto.request.ProductoRequest;
+import com.kevin.tienda_online.dto.response.ProductoResponse;
 import com.kevin.tienda_online.exception.ProductoNoEncontradoException;
 import com.kevin.tienda_online.model.Categoria;
 import com.kevin.tienda_online.model.Producto;

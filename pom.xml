@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kevin</groupId>
-	<artifactId>tienda-online</artifactId>
+	<artifactId>NovaTech</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
-	<url/>
+	<url/>	
 	<licenses>
 		<license/>
 	</licenses>

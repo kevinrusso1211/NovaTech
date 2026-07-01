@@ -3,7 +3,7 @@ package com.kevin.tienda_online.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kevin.tienda_online.dto.AdminDashboardResponse;
+import com.kevin.tienda_online.dto.response.AdminDashboardResponse;
 import com.kevin.tienda_online.repository.PedidoRepository;
 import com.kevin.tienda_online.repository.ProductoRepository;
 import com.kevin.tienda_online.repository.UsuarioRepository;

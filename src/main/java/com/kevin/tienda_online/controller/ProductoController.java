@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kevin.tienda_online.dto.ProductoRequest;
-import com.kevin.tienda_online.dto.ProductoResponse;
+import com.kevin.tienda_online.dto.request.ProductoRequest;
+import com.kevin.tienda_online.dto.response.ProductoResponse;
 import com.kevin.tienda_online.model.Categoria;
+import com.kevin.tienda_online.service.FileStorageService;
 import com.kevin.tienda_online.service.ProductoService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,6 +34,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private FileStorageService fileStorageService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Crear producto", description = "Crear un nuevo producto")

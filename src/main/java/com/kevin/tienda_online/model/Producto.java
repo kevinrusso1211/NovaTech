@@ -25,5 +25,7 @@ public class Producto {
     private int stock;
     private String imagenUrl;
     private Categoria categoria;
+    private Double calificacionPromedio = 0.0;
+    private Integer totalReseñas = 0;
 
 }

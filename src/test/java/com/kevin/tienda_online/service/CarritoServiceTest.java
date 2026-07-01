@@ -16,8 +16,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.kevin.tienda_online.dto.AgregarProductoCarritoRequest;
-import com.kevin.tienda_online.dto.CarritoResponse;
+import com.kevin.tienda_online.dto.request.AgregarProductoCarritoRequest;
+import com.kevin.tienda_online.dto.response.CarritoResponse;
 import com.kevin.tienda_online.exception.CarritoNoEncontradoException;
 import com.kevin.tienda_online.exception.ProductoNoExisteEnCarritoException;
 import com.kevin.tienda_online.exception.StockInsuficienteException;

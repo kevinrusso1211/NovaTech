@@ -18,7 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.kevin.tienda_online.dto.PedidoResponse;
+import com.kevin.tienda_online.dto.response.PedidoResponse;
 import com.kevin.tienda_online.exception.CarritoVacioException;
 import com.kevin.tienda_online.exception.EstadoPedidoInvalidoException;
 import com.kevin.tienda_online.exception.StockInsuficienteException;
@@ -51,6 +51,9 @@ class PedidoServiceTest {
 
     @InjectMocks
     private PedidoService pedidoService;
+
+    @Mock
+    private CuponService cuponService;
 
     @Test
     void deberiaCrearPedidoCorrectamente() {
@@ -96,7 +99,7 @@ class PedidoServiceTest {
                 .thenReturn(carrito);
 
         // Act
-        PedidoResponse response = pedidoService.crearPedido(usuarioId);
+        PedidoResponse response = pedidoService.crearPedido(usuarioId,null);
 
         // Assert
         assertEquals(usuarioId, response.getUsuarioId());
@@ -128,7 +131,7 @@ class PedidoServiceTest {
 
         assertThrows(
                 CarritoVacioException.class,
-                () -> pedidoService.crearPedido(usuarioId)
+                () -> pedidoService.crearPedido(usuarioId,null)
         );
 
         verify(pedidoRepository, never()).save(any(Pedido.class));
@@ -170,7 +173,7 @@ class PedidoServiceTest {
         // Act + Assert
         assertThrows(
                 StockInsuficienteException.class,
-                () -> pedidoService.crearPedido(usuarioId)
+                () -> pedidoService.crearPedido(usuarioId,null)
         );
 
         // Verify

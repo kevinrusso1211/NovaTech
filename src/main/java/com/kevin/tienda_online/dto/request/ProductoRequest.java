@@ -1,4 +1,4 @@
-package com.kevin.tienda_online.dto;
+package com.kevin.tienda_online.dto.request;
 
 import java.math.BigDecimal;
 

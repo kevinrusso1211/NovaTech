@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kevin.tienda_online.dto.AgregarProductoCarritoRequest;
-import com.kevin.tienda_online.dto.CarritoResponse;
+import com.kevin.tienda_online.dto.request.AgregarProductoCarritoRequest;
+import com.kevin.tienda_online.dto.response.CarritoResponse;
 import com.kevin.tienda_online.exception.CantidadInvalidaException;
 import com.kevin.tienda_online.exception.CarritoNoEncontradoException;
 import com.kevin.tienda_online.exception.ProductoNoEncontradoException;

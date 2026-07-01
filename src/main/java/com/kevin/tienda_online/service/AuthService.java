@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.kevin.tienda_online.dto.LoginRequest;
-import com.kevin.tienda_online.dto.RegisterRequest;
-import com.kevin.tienda_online.dto.UsuarioResponse;
+import com.kevin.tienda_online.dto.request.LoginRequest;
+import com.kevin.tienda_online.dto.request.RegisterRequest;
+import com.kevin.tienda_online.dto.response.UsuarioResponse;
 import com.kevin.tienda_online.exception.CredencialesInvalidasException;
 import com.kevin.tienda_online.exception.UsuarioNoEncontradoException;
 import com.kevin.tienda_online.exception.UsuarioYaExisteException;
@@ -47,15 +47,25 @@ public class AuthService {
         return convertirAResponse(usuarioGuardado);
     }
 
+
     public String iniciarSesion(LoginRequest request) {
+
+        System.out.println("Email recibido: '" + request.getEmail() + "'");
         Usuario usuario = usuarioRepository.findByEmail(request.getEmail());
-        if(usuario == null){
+        System.out.println("Usuario encontrado: " + usuario);
+
+        if (usuario == null) {
             throw new UsuarioNoEncontradoException("El usuario no existe");
-        }else if(passwordEncoder.matches(request.getPassword(), usuario.getPassword())){
-            return jwtService.generarToken(usuario.getEmail());
+        }
+
+        if (passwordEncoder.matches(request.getPassword(), usuario.getPassword())) {
+            String token = jwtService.generarToken(usuario.getEmail());
+            usuario.setTokenActivo(token);
+            usuarioRepository.save(usuario);
+
+            return token;
         }
         throw new CredencialesInvalidasException(Mensajes.CREDENCIALES_INVALIDAS);
-        
     }
 
     private UsuarioResponse convertirAResponse(Usuario usuario) {

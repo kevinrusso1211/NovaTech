@@ -1,4 +1,4 @@
-package com.kevin.tienda_online.dto;
+package com.kevin.tienda_online.dto.response;
 
 import java.math.BigDecimal;
 
@@ -18,5 +18,7 @@ public class ProductoResponse {
     private Integer stock;
     private String imagenUrl;
     private Categoria categoria;
+    private Double calificacionPromedio;
+    private Integer totalReseñas;
 
 }
